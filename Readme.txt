@@ -1,0 +1,1 @@
+Template driven form, ViewChild Two way databinding, dinamic form, form validation, 
