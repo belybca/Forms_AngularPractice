@@ -10,6 +10,8 @@
                     <div class="col-sm-9">
                            
                         <input type="text" class="form-control" placeholder="Nombre del producto" ngModel name="producto" minlength="3" required>
+                        <!-- [ngModel]="initForm.producto"
+                        > -->
                         
                         <span class="form-text text-danger"
                               *ngIf="nombrevalido()"
@@ -20,7 +22,10 @@
             <div class="mb-3 row">
                     <label class="col-sm-3 col-form-label">Precio</label>
                     <div class="col-sm-9">
-                            <input type="number" class="form-control" placeholder="Precio del producto"  ngModel name="price">
+                            <input type="number" class="form-control" placeholder="Precio del producto"  ngModel name="price" min="0">
+                            <!-- [ngModel]="initForm.price"
+                            > -->
+                            
                             <span class="form-text text-danger"
                               *ngIf="preciovalido()"
                         >Precio debe ser mayor a cero</span>
@@ -31,7 +36,14 @@
              <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Ecistencias</label>
                 <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="Existencias del producto"  ngModel name="exist">
+                        <input type="number" class="form-control" placeholder="Existencias del producto"  ngModel name="exist" required
+                               customMin    
+                               [minimo]="1"  >
+                               <!-- [ngModel]="initForm.exist"   
+                        > -->
+                        <span class="form-text text-danger"
+                        *ngIf="(miFormulario.controls['exist']?.errors) && miFormulario.controls['exist']?.touched"
+                         >Debe ser mayor a 0</span>
                 </div>
              </div>
 
@@ -59,5 +71,8 @@
 
         <span>Value</span>
         <pre>{{ miFormulario.value | json}}</pre>
+
+        <span>Directive</span>
+        <pre>{{ miFormulario.controls['exist']?.errors| json}}</pre>
     </div>
 </div>

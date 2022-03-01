@@ -10,6 +10,9 @@ interface MenuItem{
   selector: 'app-sidemenu',
   templateUrl: './sidemenu.component.html',
   styles: [
+    `li{
+      cursor: poinyer
+    }`
   ]
 })
 export class SidemenuComponent {

@@ -14,10 +14,26 @@ export class BasicosComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  //en el caso que se quiera inicializar la form y se pone en el HTML [ngModel]="initForm.name" example [ngModel]="initForm.price"
+  //I just  going to comented because I don't like it much 
+  initForm={
+    producto:'',
+    exist:1,
+    price:1
+
+  }
   // guardar(miFormulario : NgForm)
   guardar(){
     
-    console.log(this.miFormulario);
+    // console.log(this.miFormulario);
+    console.log('Posteo correcto');
+    this.miFormulario.resetForm();
+    // en reset tambien se pueden establecer los valores con q va a quedar el form despues del reset
+    // this.miFormulario.resetForm({
+    //   producto:'',
+    //   price:0,
+    //   exist:0
+    // });
   }
   nombrevalido() : boolean{
     return this.miFormulario?.controls['producto']?.invalid &&
@@ -28,4 +44,5 @@ export class BasicosComponent implements OnInit {
     this.miFormulario?.controls['price']?.touched
     // return  this.miFormulario?.controls['price']?.touched;
   }
+
 }
